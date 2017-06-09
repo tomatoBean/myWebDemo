@@ -13,8 +13,8 @@ git clone https://github.com/boutell/cgic
 =======================================================================
 
 [ code download ]
-
-  https://github.com/Akagi201/boa
+  http://www.boa.org ( risky to compile due to some modification jobs  )
+  https://github.com/Akagi201/boa ( compile smoothingly )
 
 [ compile  ]
   ./configure

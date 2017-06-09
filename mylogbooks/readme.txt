@@ -6,8 +6,10 @@ http://www.w3school.com.cn/tags/tag_form.asp
 http://www.boa.org/documentation/boa-1.html
 https://httpd.apache.org/
 http://www.runoob.com/tags/tag-video.html
+http://www.sqlite.org/
 
 git clone https://github.com/boutell/cgic
+git clone https://github.com/smparkes/sqlite
 
 -------------------------------------------------------
 =======================================================================
