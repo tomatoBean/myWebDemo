@@ -5,18 +5,15 @@ http://www.cgi101.com/book/ch1/text.html
 http://www.w3school.com.cn/tags/tag_form.asp
 http://www.boa.org/documentation/boa-1.html
 https://httpd.apache.org/
-http://www.runoob.com/tags/tag-video.html
-http://www.sqlite.org/
 
 git clone https://github.com/boutell/cgic
-git clone https://github.com/smparkes/sqlite
 
 -------------------------------------------------------
 =======================================================================
 
 [ code download ]
-  http://www.boa.org ( risky to compile due to some modification jobs  )
-  https://github.com/Akagi201/boa ( compile smoothingly )
+
+  https://github.com/Akagi201/boa
 
 [ compile  ]
   ./configure
@@ -131,6 +128,9 @@ board operations:
   .show   ------> print environment variables
    ".schema"命令，在没有参数的情况，它会显示最初用于创建数据库的CREATE TABLE和CREATE INDEX的SQL语句。
 
+   to create table:   create table user(name varchar(255),passwd varchar(255));
+   to insert table:   insert into user values('tomato','123');
+   to see table values:   select * from  user;
 
 sql language practise:
     select * from user where name ='fengxianl';
@@ -205,6 +205,3 @@ G、content-Language（显示语言的设定）
 H、Cache-Control指定请求和响应遵循的缓存机制。
 Cache-Control指定请求和响应遵循的缓存机制。在请求消息或响应消息中设置Cache-Control并不会修改另一个消息处理过程中的缓存处理过程。
 
-
-
-ffmpeg -i input.avi -acodec libfaac -b:a 128k -vcodec mpeg4 -b:v 1200k -flags +aic+mv4 output.mp4

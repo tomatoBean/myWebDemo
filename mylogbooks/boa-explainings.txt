@@ -1,0 +1,147 @@
+
+／＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+	
+	http协议扫盲部分
+
+＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊／
+
+
+
+RFC(Request For Comments)-意即“请求注解”，包含了关于Internet的几乎所有重要的文字资料。
+
+如果你想成为网络方面的专家，那么RFC无疑是最重要也是最经常需要用到的资料之一，所以RFC享有网络知识圣经之美誉。
+通常，当某家机构或团体开发出了一套标准或提出对某种标准的设想，想要征询外界的意见时，就会在Internet上发放一份RFC，对这一问题感兴趣的人可以阅读该RFC并提出自己的意见；绝大部分网络标准的指定都是以RFC的形式开始，经过大量的论证和修改过程，由主要的标准化组织所指定的，但在RFC中所收录的文件并不都是正在使用或为大家所公认的，也有很大一部分只在某个局部领域被使用或并没有被采用，一份RFC具体处于什么状态都在文件中作了明确的标识.
+
+　　RFC由一系列草案组成，起始于1969年（第一个RFC文档发布于1969年4月7日，参见“RFC30年”，RFC2555”），RFC文档是一系列关于Internet（早期为ARPANET）的技术资料汇编。
+这些文档详细讨论了计算机网络的方方面面，重点在网络协议，进程，程序，概念以及一些会议纪要，意见，各种观点等。 
+　　“RFC编辑者”是RFC文档的出版者，它负责RFC最终文档的编辑审订。“RFC编辑者”也保留有RFC的主文件，称为RFC索引，用户可以在线检索。在RFC近30年的历史中，“RFC编辑者”一直由约翰•普斯特尔（Jon Postel）来担任，而现在“RFC编辑者”则由一个工作小组来担任，这个小组受到“因特网社团”（Internet Society）的支助。 
+　　RFC编辑者负责RFC以及RFC的整体结构文档，并维护RFC的索引。Internet协议族的文档部分（由Internet工程委员会“因特网工程师任务组”IETF以及IETF 下属的“因特网工程师指导组”IESG 定义），也做为RFC文档出版。因此，RFC在Internet相关标准中有着重要的地位。 
+　　RFC编辑者的职责是由Internet 中的大家提议形成的，所出版的语言也就和Internet一样。IETF和ISOC是代表了世界各地的国际性组织，英语是IETF的第一工作语言，也是IETF的正式出版语言。RFC 2026 "The Internet Standards Process -- Revision 3" 允许RFC翻译成其他不同的语言。但是不能保证其翻译版本是否正确。因此，RFC编辑不对非英语的版本负责，而只是指明了哪里有非英语的版本，将这些信息列在WEB页上。 
+
+
+HTTP协议中GET、POST和HEAD的介绍
+GET：  请求指定的页面信息，并返回实体主体。
+HEAD： 只请求页面的首部。
+POST： 请求服务器接受所指定的文档作为对所标识的URI的新的从属实体。
+
+
+事实上 GET 适用于多数请求，而保留 POST仅用于更新站点。
+
+根据 HTTP 规范，GET 用于信息获取，而且应该是安全的和幂等的。
+
+所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。
+幂等的意味着对同一 URL的多个请求应该返回同样的结果。
+
+https://www.w3.org/Protocols/rfc2616/rfc2616.html
+
+
+http://www.tutorialspoint.com/http/http_methods.htm
+
+
+HTML page design:
+
+http://www.w3school.com.cn/html/html_forms.asp
+
+CSS page design:
+http://www.w3school.com.cn/css/css_intro.asp
+
+
+／＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
+	boa配置部分
+
+＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊／
+
+
+下面是对文件系统的修改
+
+（1 ）建立/etc/boa/boa.conf 可以从boa 源码里拷贝boa.conf
+
+（2 ）修改boa.conf 文件，以下为转载
+
+**********************************************************
+
+# 监听的端口号，缺省都是80 ，一般无需修改
+Port 80
+# bind 调用的IP 地址，一般注释掉，表明绑定到INADDR_ANY ，通配于服务器的所有IP 地址
+#Listen 192.68.0.5
+User 0
+Group 0
+# 当服务器发生问题时发送报警的email 地址，目前未用，注释掉
+#ServerAdmin root@localhost 
+# 错误日志文件。如果没有以/ 开始，则表示从服务器的根路径开始。如果不需要错误日志，则用#/dev/null 。在下面设置时，注意一定要建立/var/log/boa 目录
+ErrorLog /mnt/log/boa/error_log
+# 访问日志文件。如果没有以/ 开始，则表示从服务器的根路径开始。如果不需要错误日志，则用#/dev/null 或直接注释掉。在下面设置时，注意一定要建立/var/log/boa 目录
+#AccessLog /var/log/boa/access_log
+# 是否使用本地时间。如果没有注释掉，则使用本地时间。注释掉则使用UTC 时间
+#UseLocaltime
+# 是否记录CGI 运行信息，如果没有注释掉，则记录，注释掉则不记录
+#VerboseCGILogs
+# 服务器名字
+ServerName www.hyesco.com 
+# 是否启动虚拟主机功能，即设备可以有多个网络接口，每个接口都可以拥有一个虚拟的Web 服
+# 务器。一般注释掉，即不需要启动
+#VirtualHost
+# 非常重要，HTML 文档的主目录。如果没有以/ 开始，则表示从服务器的根路径开始。
+DocumentRoot /var/www
+# 如果收到一个用户请求的话，在用户主目录后再增加的目录名
+UserDir public_html
+#HTML 目录索引的文件名，也是没有用户只指明访问目录时返回的文件名
+DirectoryIndex index.html
+# 当HTML 目录没有索引文件时，用户只指明访问目录时，boa 会调用该程序生成索引文件然后
+# 返回给用户，因为该过程比较慢最好不执行，可以注释掉或者给每个HTML 目录加上#DirectoryIndex 指明的文件
+#DirectoryMaker /usr/lib/boa/boa_indexer
+# 如果DirectoryIndex 不存在，并且DirectoryMaker 被注释，那么就用Boa 自带的索引
+# 生成程序来生成目录的索引文件并输出到下面目录，该目录必须是Boa 能读写
+# DirectoryCache /var/spool/boa/dircache
+# 一个连接所允许的HTTP 持续作用请求最大数目，注释或设为0 都将关闭HTTP 持续作用
+KeepAliveMax 1000
+#HTTP 持续作用中服务器在两次请求之间等待的时间数，以秒为单位，超时将关闭连接
+KeepAliveTimeout 10
+# 指明mime.types 文件位置。如果没有以/ 开始，则表示从服务器的根路径开始。可以注释掉
+# 避免使用mime.types 文件，此时需要用AddType 在本文件里指明
+MimeTypes /etc/mime.types
+# 文件扩展名没有或未知的话，使用的缺省MIME 类型
+DefaultType text/plain
+# 提供CGI 程序的PATH 环境变量值
+CGIPath /bin:/usr/bin:/usr/local/bin
+# 将文件扩展名和MIME 类型关联起来，和mime.types 文件作用一样。如果用mime.types
+# 文件，则注释掉，如果不使用mime.types 文件，则必须使用
+#AddType application/x-httpd-cgi cgi
+# 指明文档重定向路径
+#Redirect /bar http://elsewhere/feh/bar 
+# 为路径加上别名
+Alias /doc /usr/doc
+# 非常重要，指明CGI 脚本的虚拟路径对应的实际路径。一般所有的CGI 脚本都要放在实际路径
+# 里，用户访问执行时输入站点+ 虚拟路径+CGI 脚本名
+ScriptAlias /cgi-bin/ /mnt/www/cgi-bin/
+
+ 
+ 用户可以根据自己需要，对boa.conf 进行修改，但必须要保证其他的辅助文件和设置必须和boa.conf 里的配置相符，不然Boa 就不能正常工作。 在上面的例子中，我们还需要创建日志文件所在目录/mnt/log/boa ，创建HTML 文档的主目录/mnt/www ，将mime.types 文件拷贝 到/etc 目录，创建CGI 脚本所在目录/var/mnt/cgi-bin/ 。mime.types 文件用来指明不同文件扩展名对应的MIME 类型，一般 可以直接从Linux 主机上拷贝一个，大部分也都是在主机的/etc 目录下。
+
+
+／＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+	
+	CGI 脚本解释部分
+
+＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊／
+
+CGI 全称 Common Gateway Interface （共同编程接口），是一种编程接口，不论什么语言，只要按照该接口的标准编写出来的程序，即可叫做 CGI 程序。 CGI 程序的输入 / 输出是使用编程语言的标准输入 / 标准输出，所以用 C/C++ 来写 CGI 程序就好象写普通程序一样，不过还有几样东西要注意的。 
+
+1 、 CGI 程序的通信方式 
+
+当 有数据从浏览器传到 Web 服务器后，该服务器会根据传送的类型（基本有二类： GET/POST ），将这些接收到的数据传入 QUERY_STRING或 变量中， CGI 程序可以通过标准输入，在程序中接收这些数据。当要向浏览器发送信息时，只要向 Web 服务器发送特定的文件头信息，即可通过标准输出将信息发往 Web 服务器， Web 服务器处理完这些由 CGI 程序发来的信息后就会将这些信息发送给浏览器。这样就是 CGI 程序的通信方式了。 
+
+2 、接收数据 
+
+用 GET 方式接收到的数据保存在 Web 服务器的 QUERY_STRING 变量里，而通过 POST 方式接收到的数据是保存在 这个 Web 服务器变量里。它们的唯一区别就是：以 GET 方式接收的数据是有长度限制，而用 POST 方式接收的数据是没有长度限制的。并且，以 GET 方式发送数据，可以通过 URL 的形式来发送，但 POST 方式发送的数据必须要通过 Form 才到发送。 
+
+
+
+
+
+
+
+web reference list:
+http://www.cnblogs.com/hnrainll/archive/2011/05/31/2064966.html
+
