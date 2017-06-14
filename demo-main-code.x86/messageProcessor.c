@@ -46,6 +46,8 @@ typedef struct
 #define BEEP_ON      4
 #define BEEP_OFF     5
 
+//#define BEEP_ON      28672
+//#define BEEP_OFF     28673
 
 #define MSG_TYPE   250      //消息队列的类型
 #define SHM_SIZE   1024     //共享内存空间
@@ -60,7 +62,7 @@ msg_t msg;
 void *myled_fun()
 {
 
-   printf("\n###mythread_led...\n");
+   printf("\n###ENTER LED THREAD...\n");
 }
 
 
@@ -68,7 +70,7 @@ void *mybeep_fun()
 {
         int cmd;
 
-        printf("\n###ENTER BEEP THREAD...");
+        printf("\n###ENTER BEEP THREAD...\n");
         //fd_beep = open("/dev/mypwm",O_RDWR);     // 打开蜂鸣器 设备节点
         fd_beep = open("/dev/mypwm",O_RDWR | O_NONBLOCK);   // 打开蜂鸣器 设备节点
         if(fd_beep<2)
@@ -148,22 +150,23 @@ int main(int argc, const char *argv[])
         }
 
  
-   if(0!=pthread_create(&mythread_led, NULL, &myled_fun, NULL))
-   {
-	perror("mythread_led");     
-	return -1;      
-   }
 
-   if(0!=pthread_create(&mythread_beep, NULL, &mybeep_fun, NULL))
-   {
-       perror("mythread_beep");
-   }
+   	if(0!=pthread_create(&mythread_beep, NULL, &mybeep_fun, NULL))
+   	{
+       		perror("mythread_beep");
+   	}
 
+   	if(0!=pthread_create(&mythread_led, NULL, &myled_fun, NULL))
+   	{
+		perror("mythread_led");     
+		return -1;      
+   	}
 
  	while(1)
         {
                 msgrcv(msgid,&msg,MSG_SIZE,MSG_TYPE,0);
 		printf("\nmsg.flag=%d\n", msg.flag);
+		printf("\nmsg.cmd=%d\n", msg.cmd);
                 switch(msg.flag)
                 {
 			case BEEP_TYPE:
@@ -172,7 +175,8 @@ int main(int argc, const char *argv[])
 			default:
 				break;
                 }
-                //sleep(1);
+                sleep(2);
+		//usleep(500);
         }
 
    if(0 != pthread_join(mythread_led,NULL))
@@ -186,7 +190,4 @@ int main(int argc, const char *argv[])
           perror("pthread_beep");
           return -1;
     }
-
-
-
 }
