@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>环境信息</title>
+
+</head>
+
+<body background="./image/1.jpg">
+<div align="center">
+  <table width="900" height="192" border="0" background="">
+    <tr>
+      <th width="385" height="80" scope="col">&nbsp;<font face="华文行楷"  color="#FFA500" size="+5">农场控制</font></th>
+    </tr>
+  </table>
+</div>
+<div></div>
+
+<p></p>
+
+
+<div align="center" id = "background">
+	<table width="900" height="611" border="0">
+        <tr>
+            <td width="200">
+            <table>
+            <tr><td width="200" height="153">
+            <div align="center"><a href="./main.html"><b><h1><font face="华文行楷"  color="#482D26" size="+3">返回首页</font></h1></b></a></div>
+            <tr><td height="73">
+            <tr><td height="73">
+            <tr><td height="73">
+            <tr><td height="73">
+            <tr><td height="29">
+            </table>
+            </td>
+            
+          <td width="707" height="600" border="0" >
+          <table>
+          <tr>
+          <td width="520" height="60">
+          <label ><h2 align="center">设备工作情况</h2>
+          </label>
+          <div align="center"><iframe scrolling="yes" src="./cgi-bin/device.cgi" width="500" height="400"></iframe>&nbsp;</div>
+          </td>
+          </tr>
+          <tr><td width="520" height="60"><div align="center">
+                  <form id="form1" name="form1"  method="post" action="./cgi-bin/led.cgi">
+                   
+                      
+                      
+                      <label>灯光系统:
+                        <input type="submit" name="led_on" value="开灯" id="led_0" />
+                        </label>
+                      <label>
+                        <input type="submit" name="led_off" value="关灯" id="led_1" />
+                        </label>
+                   
+                  </form>
+                 <!-- <iframe id="id_iframe" name="nm_iframe" style ="display:none;"></iframe> target="nm_iframe" -->
+                </div></td></tr>
+            <tr>
+            <td height="60"><div align="center">
+                  <form id="form4" name="form4"  method="post" action="./cgi-bin/beep.cgi">
+                    
+                    <label>报警系统:
+                      <input type="submit" name="beep_on" value="报警" id="beep_0" />
+                      </label>
+                    <label>
+                      <input type="submit" name="beep_off" value="停止" id="beep_1" />
+                      </label>
+                   
+                  </form>
+                </div></td>
+            </tr>
+            <tr>
+            <td height="60"><div align="center">
+                  <form id="form3" name="form3"  method="post" action="./cgi-bin/water.cgi">
+                    
+                      
+                      <label>水泵系统:
+                        <input type="submit" name="dj_on" value="开启" id="seg_0" />
+                        </label>
+                      <label>
+                        <input type="submit" name="dj_off" value="停止" id="seg_1" />
+                        </label>
+                        
+                  </form>
+                </div></td>
+            </tr>
+            
+            </table>
+            </td>
+            
+            
+ 	</table>
+</div>
+</body>
+</html>

@@ -47,6 +47,17 @@ int   mbuf[5];           //记录五个最值 的数组；
 #define BEEP_OFF     5
 
 
+#define SNAPSHOT_ON      6
+#define SNAPSHOT_OFF     7
+#define SNAPSHOT_DEL     8
+
+
+#define RECORD_ON      9
+#define RECORD_OFF     10
+#define RECORD_DEL     11
+#define RECORD_RESET     12
+
+
 
 
 /*
@@ -75,7 +86,8 @@ int   mbuf[5];           //记录五个最值 的数组；
 #define DHT_TYPE     93     // 温湿度、烟雾值上下限
 #define FFMPEG_TYPE_ON  94     // 开启录像
 #define FFMPEG_TYPE_OFF 95     // 关闭录像 
-#define PICTURE_TYPE 96     //  抓拍
+#define SNAPSHOT_TYPE   96     //  抓拍
+#define RECORD_TYPE     100    
 
 
 #define MSG_TYPE   250      //消息队列的类型
@@ -87,11 +99,14 @@ int   mbuf[5];           //记录五个最值 的数组；
 pthread_mutex_t mutex_led;
 pthread_mutex_t mutex_beep;
 pthread_mutex_t mutex_dht;
-//pthread_mutex_t mutex_camera;
+pthread_mutex_t mutex_snapshot;
+pthread_mutex_t mutex_record;
 
 pthread_cond_t cond_led;
 pthread_cond_t cond_beep;
 pthread_cond_t cond_dht;
+pthread_cond_t cond_snapshot;
+pthread_cond_t cond_record;
 //pthread_cond_t cond_camera;
 /*******************************消息队列******************************************/
 typedef struct

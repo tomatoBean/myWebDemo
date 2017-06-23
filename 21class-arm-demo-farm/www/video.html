@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实时监控</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body background="./image/0.jpg">
+<div align="center">
+  <table width="900" height="192" border="0" background="">
+    <tr>
+      <th width="385" height="80" scope="col">&nbsp;<font face="华文行楷"  color="#1E1E1E" size="+5">农场实时视频监控</font></th>
+    </tr>
+  </table>
+</div>
+<div></div>
+
+<p></p>
+
+
+<div align="center" id = "background">
+	<table width="900" height="611" border="0">
+        <tr>
+            <td width="180">
+            <table>
+            <tr><td width="200" height="153">
+            <div align="center"><a href="./main.html"><b><h1><font face="华文行楷"  color="#482D26" size="+3">返回首页</font></h1></b></a></div>
+            <tr><td height="73">
+            <tr><td height="73">
+            <tr><td height="73">
+            <tr><td height="73">
+            <tr><td height="29">
+            </table>
+            </td>
+          
+            
+          <td width="538">
+<table width="554"  align="center" height="540" border="0">
+  <tr>
+    <td width="548" height="500"><img src="http://172.28.1.113:8080/?action=stream"/></td>
+    </tr>
+  <tr>
+    <td height="34"><form id="form3" name="form3" method="post" action="./cgi-bin/ca_picture.cgi"><input name="store" type="hidden" value="1" />
+      <table width="500">
+        <tr>
+          <td width="57">
+            <div align="center">
+              <input type="submit" name="button3" id="button3" value="抓拍" />&nbsp;&nbsp;&nbsp;<a href="./cgi-bin/hs_picture.cgi">历史照片</a></div></td>
+          </tr>
+        </table>
+    </form></td>
+  </tr>
+  <tr>
+    <td height="34"><form id="form3" name="form3" method="post" action="./cgi-bin/monitor.cgi"><input name="store" type="hidden" value="1" />
+      <table width="500">
+        <tr>
+          <td width="57">
+            <div align="center">
+              <input type="submit" name="button4" id="button4" value="视频录制" />&nbsp;&nbsp;&nbsp;</div></td>
+              <td width="57">
+            <div align="center">
+              <input type="submit" name="button5" id="button5" value="停止录制" />&nbsp;&nbsp;&nbsp;</div></td>
+          </tr>
+        </table>
+    </form></td>
+  </tr>
+  </table>
+  </td>
+  <td width="168">
+  </tr>
+  
+            
+ 	</table>
+</div>
+</body>
+</html>

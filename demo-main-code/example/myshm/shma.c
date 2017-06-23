@@ -12,6 +12,7 @@
         int     shmid;  
         char    *shmptr;  
       
+
         if ( (shmid = shmget(0x54, SHM_SIZE, SHM_MODE | IPC_CREAT)) < 0)  
             perror("shmget");  
       
@@ -21,5 +22,6 @@
         /* 往共享内存写数据 */  
         sprintf(shmptr, "%s", "hello, world");  
       
+
         exit(0);  
     }  

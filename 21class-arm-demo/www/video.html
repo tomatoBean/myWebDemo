@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>监控录像</title>
+<style type="text/css">
+body {
+	background-image: url(%E7%BD%91%E9%A1%B5%E7%94%A8%E5%9B%BE/main.jpg);
+	background-repeat: no-repeat;
+}
+</style>
+</head>
+
+<body>
+<h1 align="center" style="color:blue">仓库监控录像</h1>
+<div align="center" id = "background">
+	<table width="900" height="611" border="0">
+        <tr>
+          <td width="180"></td>                     
+          <td width="538">
+	<table width="500"  align="center" height="480" border="0">
+  <tr>
+    <td height="484">
+<!--  <video src="/motion/photo/test.avi" width="640" height="480" controls="controls">
+  </video> -->
+
+<video width="640" height="480" controls>
+    <source src="./motion/photo/output.mp4" type="video/mp4">
+</video>
+
+</td>
+    </tr>
+  <tr>
+    <td height="34">
+      <table width="488">
+        <tr>
+          <td width="324">
+            </td>
+          </tr>
+        </table>
+   </td>
+  </tr>
+  </table>
+  </td>
+  <td width="168"><table>
+            <tr><td width="159" height="22">
+            <tr><td height="73">
+            <tr><td height="73">
+
+             <form action="./cgi-bin/converter.cgi" method="post" id="form1" name="form1">
+	     <div>
+		<tr><td height="10">  
+                <input type="submit" name="button1" id="button1" value="视频格式转换" style = "font-family:arial;color:green;font-size:20px;"
+			  height="50" weight="100"/>
+	    </div>	 
+	    </form>
+        
+            <tr><td height="73">
+            <tr><td height="73"> <a href="main.html"><b><font face="华文行楷"  color="#482D26" size="+3">返回首页</font></b></a>       
+            <tr><td height="29">
+            </table></tr>
+  
+            
+ 	</table>
+</div>
+
+
+</body>
+</html>

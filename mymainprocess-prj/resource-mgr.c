@@ -3,17 +3,23 @@
 #include "resource-beep.c"
 #include "resource-dht.c"
 #include "resource-camera.c"
+#include "resource-snapshot.c"
+#include "resource-record.c"
 
 pthread_t pthread_led;
 pthread_t pthread_beep;
 pthread_t pthread_dht;
 pthread_t pthread_camera;
+pthread_t pthread_snapshot;
+pthread_t pthread_record;
 
 #if 1
 void init_all()
 {
 	pthread_mutex_init(&mutex_led,NULL);
 	pthread_mutex_init(&mutex_beep,NULL);
+	pthread_mutex_init(&mutex_snapshot,NULL);
+	pthread_mutex_init(&mutex_record,NULL);
 //	pthread_mutex_init(&mutex_dht,NULL);
 //	pthread_mutex_init(&mutex_camera,NULL);
 
@@ -72,7 +78,7 @@ int main(int argc, const char *argv[])
 	/****************************led线程************************************/
 	if(0 != pthread_create(&pthread_led,NULL,led_fun,NULL))
 	{
-		perror("pthread_create1");
+		perror("pthread led");
 		return -1;
 	}
 
@@ -81,7 +87,7 @@ int main(int argc, const char *argv[])
 	/****************************beep线程************************************/
 	if(0 != pthread_create(&pthread_beep,NULL,beep_fun,NULL))
 	{
-		perror("pthread_create2");
+		perror("pthread beep");
 		return -1;
 	}
 
@@ -89,14 +95,27 @@ int main(int argc, const char *argv[])
 	/******************************DHT11温湿度线程*****************************/
 	if(0 != pthread_create(&pthread_dht,NULL,dht_fun,NULL))
 	{
-		perror("pthread_create3");
+		perror("pthread dht");
 		return -1;
 	}
 
 	/******************************照相机线程*****************************/
 	if(0 != pthread_create(&pthread_camera,NULL,camera_fun,NULL))
 	{
-		perror("pthread_create4");
+		perror("pthread camera");
+		return -1;
+	}
+	/******************************照相机线程*****************************/
+	if(0 != pthread_create(&pthread_snapshot,NULL,snapshot_fun,NULL))
+	{
+		perror("pthread snapshot");
+		return -1;
+	}
+
+	/******************************record*****************************/
+	if(0 != pthread_create(&pthread_record,NULL,record_fun,NULL))
+	{
+		perror("pthread record");
 		return -1;
 	}
 
@@ -111,6 +130,13 @@ int main(int argc, const char *argv[])
 		case BEEP_TYPE:
 			pthread_cond_signal(&cond_beep);  // 唤醒蜂鸣器线程
 			break;
+		case SNAPSHOT_TYPE:
+			pthread_cond_signal(&cond_snapshot);  
+			break;
+		case RECORD_TYPE:
+			pthread_cond_signal(&cond_record);  
+			break;
+
 		case DHT_TYPE:
 			mbuf[0] = msg.tmp_max;      // 存储开始设置的阈值
 			mbuf[1] = msg.tmp_min;
@@ -129,7 +155,16 @@ int main(int argc, const char *argv[])
 		perror("pthread_led");
 		return -1;
 	}
-
+	if(0 != pthread_join(pthread_snapshot,NULL))
+	{
+		perror("pthread_snapshot");
+		return -1;
+	}
+	if(0 != pthread_join(pthread_record,NULL))
+	{
+		perror("pthread_record");
+		return -1;
+	}
 	if(0 != pthread_join(pthread_beep,NULL))
 	{
 		perror("pthread_beep");
